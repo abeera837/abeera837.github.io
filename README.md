@@ -1,49 +1,116 @@
-# portfolio
- My portfolio of Data Analytics, Machine Learning, and Generative AI projects.
-# 📂 Data & AI Portfolio
+Abeera Abbasi — AI Engineer Portfolio
 
-Welcome!  
-I’m Abeera Abbasi — a Data Analyst with experience in Machine Learning, Data Analytics, and Generative AI applications.  
-This portfolio showcases selected **public projects** that demonstrate my skills across data processing, analysis, visualization, and AI development.
+This repository hosts my personal portfolio website showcasing selected work in applied Artificial Intelligence, Machine Learning, and data-driven system design.
 
----
+Overview
 
-## 🔍 Skills
-- **Data Analysis**: SQL, Excel, Python (Pandas, NumPy), Data Cleaning, EDA
-- **Machine Learning**: Scikit-learn, TensorFlow/PyTorch, Feature Engineering, Model Evaluation
-- **Generative AI**: LangChain, OpenAI API, RAG Applications, Prompt Engineering
-- **Visualization**: Power BI, Tableau, Matplotlib, Seaborn, Plotly
-- **Other Tools**: Git, Jupyter, Docker
+AI Engineer with 2+ years of experience building production-grade:
 
----
+Retrieval-Augmented Generation (RAG) systems
 
-## 📊 Projects
+LLM-powered applications
 
-### **1. Sales Performance Dashboard**
-- **Type**: Data Analysis & Visualization  
-- **Tech**: SQL, Python, Power BI  
-- **Summary**: Interactive dashboard showing regional sales trends, KPIs, and product performance using public sales data.  
+Time-series predictive models
 
----
+Computer vision pipelines
 
-### **2. Customer Churn Prediction**
-- **Type**: Machine Learning  
-- **Tech**: Python, Scikit-learn, Pandas, Matplotlib  
-- **Summary**: Predictive model to identify customers at high risk of churn using feature engineering and logistic regression on a public telecom dataset.  
+Business intelligence and analytics dashboards
 
----
+The portfolio highlights end-to-end ownership across:
 
-### **3. RAG Chatbot for Public Dataset**
-- **Type**: Generative AI  
-- **Tech**: LangChain, OpenAI API, FAISS  
-- **Summary**: Retrieval-Augmented Generation chatbot that answers questions about Pakistani tourism data.  
+Data ingestion and preprocessing
 
+Model experimentation and validation
 
----
+API layer integration
 
-## 📫 Contact
-- **LinkedIn**:abeera-abbasi
-- **Email**: abeera8801@gmail.com
+Deployment architecture
 
----
-⭐ *This portfolio is regularly updated with new projects — check back soon!*
+Stakeholder-facing outputs
+
+Technical Focus Areas
+Machine Learning & Deep Learning
+
+Predictive modelling (classification, regression)
+
+Time-series modelling (LSTM, anomaly detection)
+
+Feature engineering and statistical validation
+
+Sensor and IoT data modelling
+
+Large Language Models & Agentic Systems
+
+RAG pipeline architecture
+
+LangChain / LangGraph orchestration
+
+Prompt engineering and structured output control
+
+Vector search (Qdrant)
+
+OpenAI and Claude integrations
+
+Computer Vision
+
+YOLO-based object detection
+
+Pose estimation systems
+
+Real-time inference pipelines
+
+Retail and fitness use cases
+
+Data Engineering & Analytics
+
+SQL-based data modelling
+
+KPI layer construction
+
+Churn and retention analysis
+
+BI dashboard development (Power BI)
+
+Automated reporting pipelines
+
+Infrastructure & Deployment
+
+FastAPI REST services
+
+PostgreSQL
+
+Google Cloud Platform
+
+Production API integrations
+
+ERP system automation
+
+Design Philosophy
+
+Projects presented here emphasize:
+
+System-level thinking over isolated modelling
+
+Production-readiness over experimental notebooks
+
+Business alignment over technical novelty
+
+Clear translation of model outputs into decision-support systems
+
+Selected Work Includes
+
+Telecom sensor RAG chatbot for live network intelligence
+
+LSTM-based predictive maintenance for infrastructure
+
+AI-integrated ERP automation workflows
+
+Computer vision retail monitoring systems
+
+AI-powered analytics dashboards for business strategy
+
+Contact
+
+Email: abeera8801@gmail.com
+
+LinkedIn: https://linkedin.com/in/abeera-abbasi
