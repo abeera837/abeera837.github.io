@@ -5,20 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abeera Abbasi — AI Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #F7F6F2;
-    --surface: #EDECEA;
-    --border: #D8D5CF;
-    --text: #1A1916;
-    --muted: #7A7670;
-    --accent: #2A5F4F;
-    --accent-light: #E8F0EE;
-    --mono: 'DM Mono', monospace;
-    --sans: 'DM Sans', sans-serif;
+    --bg: #FAFAF8;
+    --surface: #F2F1EE;
+    --surface2: #E8E6E1;
+    --border: #DEDAD3;
+    --text: #1C1B18;
+    --text-2: #4A4840;
+    --text-3: #8A8780;
+    --accent: #1B4D3E;
+    --accent-mid: #2D7A5F;
+    --accent-light: #E6F0EC;
+    --accent-bright: #3DAA7A;
+    --heading: 'Syne', sans-serif;
+    --body: 'Inter', sans-serif;
   }
 
   html { scroll-behavior: smooth; }
@@ -26,342 +30,292 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: var(--sans);
+    font-family: var(--body);
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* LAYOUT */
-  .container { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 36px; }
 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(247,246,242,0.92);
-    backdrop-filter: blur(12px);
+    background: rgba(250,250,248,0.94);
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     z-index: 100;
-    padding: 18px 0;
   }
-  nav .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  nav .inner {
+    max-width: 1000px; margin: 0 auto; padding: 0 36px;
+    display: flex; justify-content: space-between; align-items: center;
+    height: 60px;
   }
-  .nav-name {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    color: var(--text);
-    text-decoration: none;
+  .nav-logo {
+    font-family: var(--heading);
+    font-size: 17px; font-weight: 700;
+    color: var(--text); text-decoration: none;
+    letter-spacing: -0.01em;
   }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-logo span { color: var(--accent-bright); }
+  .nav-links { display: flex; gap: 4px; list-style: none; }
   .nav-links a {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    transition: color 0.2s;
+    font-size: 13px; font-weight: 500;
+    color: var(--text-2); text-decoration: none;
+    padding: 6px 12px; border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
   }
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover { background: var(--surface); color: var(--text); }
+  .nav-cta { background: var(--accent) !important; color: #fff !important; padding: 6px 14px !important; }
+  .nav-cta:hover { background: var(--accent-mid) !important; }
 
   /* HERO */
-  .hero {
-    padding: 140px 0 96px;
-    border-bottom: 1px solid var(--border);
+  .hero { padding: 148px 0 100px; border-bottom: 1px solid var(--border); }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-light); border: 1px solid #C4DDD5;
+    color: var(--accent); font-size: 12px; font-weight: 500;
+    padding: 5px 14px; border-radius: 100px; margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.5s ease forwards;
   }
-  .hero-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
+  .hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--accent-bright); border-radius: 50%;
   }
   .hero h1 {
-    font-size: clamp(36px, 6vw, 58px);
-    font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.1s forwards;
+    font-family: var(--heading);
+    font-size: clamp(42px, 6.5vw, 68px);
+    font-weight: 700; line-height: 1.05;
+    letter-spacing: -0.03em; margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.5s ease 0.1s forwards;
   }
-  .hero h1 em {
-    font-style: normal;
-    color: var(--accent);
-  }
+  .hero h1 .accent { color: var(--accent-mid); }
   .hero-desc {
-    max-width: 520px;
-    color: var(--muted);
-    font-size: 16px;
-    line-height: 1.7;
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.2s forwards;
+    max-width: 560px; color: var(--text-2);
+    font-size: 16px; line-height: 1.8; margin-bottom: 44px;
+    opacity: 0; animation: fadeUp 0.5s ease 0.2s forwards;
   }
   .hero-actions {
-    display: flex;
-    gap: 14px;
-    align-items: center;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.3s forwards;
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.5s ease 0.3s forwards;
   }
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent);
-    color: #fff;
-    padding: 11px 22px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    font-family: var(--mono);
-    letter-spacing: 0.02em;
-    transition: opacity 0.2s;
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 8px;
+    font-size: 14px; font-weight: 500; font-family: var(--body);
+    text-decoration: none; transition: all 0.15s; cursor: pointer;
   }
-  .btn-primary:hover { opacity: 0.85; }
-  .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--muted);
-    padding: 11px 0;
-    text-decoration: none;
-    font-size: 13px;
-    font-family: var(--mono);
-    letter-spacing: 0.02em;
-    border-bottom: 1px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-mid); transform: translateY(-1px); }
+  .btn-secondary { background: var(--surface); color: var(--text-2); border: 1px solid var(--border); }
+  .btn-secondary:hover { background: var(--surface2); color: var(--text); }
+  .hero-stats {
+    display: flex; gap: 52px; margin-top: 64px; padding-top: 48px;
+    border-top: 1px solid var(--border);
+    opacity: 0; animation: fadeUp 0.5s ease 0.4s forwards;
   }
-  .btn-ghost:hover { color: var(--text); border-color: var(--text); }
+  .stat-num {
+    font-family: var(--heading); font-size: 34px; font-weight: 700;
+    color: var(--text); letter-spacing: -0.03em; line-height: 1; margin-bottom: 5px;
+  }
+  .stat-num span { color: var(--accent-bright); }
+  .stat-label { font-size: 13px; color: var(--text-3); }
 
   /* SECTIONS */
-  section { padding: 80px 0; border-bottom: 1px solid var(--border); }
-  section:last-child { border-bottom: none; }
-
-  .section-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 40px;
+  section { padding: 88px 0; border-bottom: 1px solid var(--border); }
+  .section-header { margin-bottom: 52px; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent-mid); margin-bottom: 12px;
+  }
+  .section-tag::before {
+    content: ''; width: 16px; height: 2px; background: var(--accent-bright);
+  }
+  .section-title {
+    font-family: var(--heading);
+    font-size: clamp(28px, 4vw, 38px); font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.15; color: var(--text);
   }
 
   /* ABOUT */
   .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    gap: 72px; align-items: start;
   }
-  .about-text p {
-    color: var(--muted);
-    margin-bottom: 16px;
-    font-size: 15px;
-    line-height: 1.75;
-  }
+  .about-text p { color: var(--text-2); margin-bottom: 18px; font-size: 15px; line-height: 1.8; }
   .about-text p:last-child { margin-bottom: 0; }
   .about-text strong { color: var(--text); font-weight: 500; }
-  .about-meta { display: flex; flex-direction: column; gap: 20px; }
-  .meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .meta-row {
+    display: flex; flex-direction: column; gap: 3px;
+    padding: 15px 0; border-bottom: 1px solid var(--border);
+  }
+  .meta-row:first-child { padding-top: 0; }
+  .meta-row:last-child { border-bottom: none; padding-bottom: 0; }
   .meta-key {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-3);
   }
   .meta-val { font-size: 14px; color: var(--text); }
 
   /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-  }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .skill-group {
-    background: var(--bg);
-    padding: 28px 24px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 24px;
+    transition: border-color 0.2s;
   }
+  .skill-group:hover { border-color: var(--accent-mid); }
   .skill-group-title {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
+    font-family: var(--heading); font-size: 13px; font-weight: 700;
+    color: var(--text); margin-bottom: 14px; letter-spacing: -0.01em;
   }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .skill-tag {
-    font-family: var(--mono);
-    font-size: 11px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 3px 9px;
-    border-radius: 3px;
-    white-space: nowrap;
+    font-size: 12px; background: var(--bg);
+    border: 1px solid var(--border); color: var(--text-2);
+    padding: 3px 10px; border-radius: 4px;
   }
 
   /* PROJECTS */
-  .projects-list { display: flex; flex-direction: column; gap: 2px; }
+  .projects-grid { display: flex; flex-direction: column; gap: 14px; }
   .project-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    transition: border-color 0.2s;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
-  .project-card:hover { border-color: var(--accent); }
-  .project-inner {
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    min-height: 200px;
+  .project-card:hover {
+    border-color: var(--accent-mid);
+    box-shadow: 0 4px 24px rgba(27,77,62,0.07);
   }
-  .project-content { padding: 36px 36px 36px 36px; }
-  .project-number {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    margin-bottom: 14px;
+  .project-inner { display: grid; grid-template-columns: 1fr 280px; min-height: 190px; }
+  .project-content { padding: 32px 36px; }
+  .project-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .project-num {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    color: var(--text-3); text-transform: uppercase;
+  }
+  .project-category {
+    font-size: 11px; font-weight: 600;
+    background: var(--accent-light); color: var(--accent);
+    padding: 2px 9px; border-radius: 4px;
+    text-transform: uppercase; letter-spacing: 0.05em;
   }
   .project-title {
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    margin-bottom: 12px;
-    line-height: 1.3;
+    font-family: var(--heading); font-size: 20px; font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.2;
+    color: var(--text); margin-bottom: 10px;
   }
   .project-desc {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.7;
-    margin-bottom: 20px;
+    color: var(--text-2); font-size: 14px; line-height: 1.75; margin-bottom: 20px;
   }
   .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
   .stack-tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.05em;
-    background: var(--accent-light);
-    color: var(--accent);
-    padding: 3px 8px;
-    border-radius: 3px;
+    font-size: 11px; font-weight: 500;
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text-2); padding: 3px 9px; border-radius: 4px;
   }
   .project-visual {
-    background: var(--surface);
-    border-left: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
+    background: var(--surface); border-left: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
   }
-  .project-visual-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    color: var(--muted);
+  .project-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vis-placeholder { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .vis-icon {
+    width: 52px; height: 52px; border: 1px solid var(--border);
+    border-radius: 10px; background: var(--bg);
+    display: flex; align-items: center; justify-content: center; font-size: 24px;
   }
-  .project-icon {
-    width: 48px;
-    height: 48px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    background: var(--bg);
-  }
-  .project-visual-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--border);
+  .vis-hint {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--border);
+    position: absolute; bottom: 12px; right: 14px;
   }
 
-  /* screenshot placeholder styling */
-  .project-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  /* CERTIFICATIONS */
+  .certs-intro {
+    color: var(--text-2); font-size: 15px; line-height: 1.8;
+    margin-bottom: 40px; max-width: 580px;
   }
-  .screenshot-note {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--border);
-    position: absolute;
-    bottom: 12px;
-    right: 14px;
+  .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .cert-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
   }
+  .cert-card:hover { border-color: var(--accent-mid); transform: translateY(-2px); }
+  .cert-image {
+    width: 100%; aspect-ratio: 4/3;
+    background: var(--surface2);
+    display: flex; align-items: center; justify-content: center;
+    border-bottom: 1px solid var(--border); overflow: hidden;
+  }
+  .cert-image img { width: 100%; height: 100%; object-fit: cover; }
+  .cert-placeholder { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .cert-placeholder-icon { font-size: 30px; }
+  .cert-placeholder-text {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--border);
+  }
+  .cert-body { padding: 18px 20px; }
+  .cert-issuer {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--accent-mid); margin-bottom: 5px;
+  }
+  .cert-name {
+    font-family: var(--heading); font-size: 14px; font-weight: 600;
+    color: var(--text); line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 6px;
+  }
+  .cert-year { font-size: 12px; color: var(--text-3); }
 
   /* FOOTER */
-  footer {
-    padding: 48px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .footer-inner {
+    padding: 52px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--border);
   }
+  .footer-left { display: flex; flex-direction: column; gap: 4px; }
   .footer-name {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
+    font-family: var(--heading); font-size: 16px; font-weight: 700;
+    color: var(--text); letter-spacing: -0.02em;
   }
-  .footer-links { display: flex; gap: 20px; }
-  .footer-links a {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    transition: color 0.2s;
+  .footer-sub { font-size: 13px; color: var(--text-3); }
+  .footer-links { display: flex; gap: 8px; }
+  .footer-link {
+    font-size: 13px; font-weight: 500; color: var(--text-2);
+    text-decoration: none; padding: 8px 14px; border-radius: 6px;
+    border: 1px solid var(--border); transition: all 0.15s;
   }
-  .footer-links a:hover { color: var(--text); }
+  .footer-link:hover { background: var(--surface); color: var(--text); }
 
   /* ANIMATIONS */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
+    from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
   }
   .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* RESPONSIVE */
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .project-inner { grid-template-columns: 1fr; }
     .project-visual { display: none; }
-    footer { flex-direction: column; gap: 20px; text-align: center; }
-    .nav-links { display: none; }
+    .certs-grid { grid-template-columns: 1fr 1fr; }
+    .hero-stats { gap: 28px; }
+    .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+    .nav-links li:not(:last-child) { display: none; }
   }
-  @media (max-width: 480px) {
+  @media (max-width: 520px) {
     .skills-grid { grid-template-columns: 1fr; }
+    .certs-grid { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; gap: 20px; }
+    .container { padding: 0 20px; }
   }
 </style>
 </head>
@@ -369,13 +323,14 @@
 
 <!-- NAV -->
 <nav>
-  <div class="container">
-    <a class="nav-name" href="#">abeera.abbasi</a>
+  <div class="inner">
+    <a class="nav-logo" href="#">Abeera<span>.</span></a>
     <ul class="nav-links">
-      <li><a href="#about">about</a></li>
-      <li><a href="#skills">skills</a></li>
-      <li><a href="#projects">projects</a></li>
-      <li><a href="resume.pdf" target="_blank">resume ↗</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="resume.pdf" target="_blank" class="nav-cta">Resume ↗</a></li>
     </ul>
   </div>
 </nav>
@@ -383,20 +338,33 @@
 <!-- HERO -->
 <div class="container">
   <div class="hero">
-    <div class="hero-label">AI Engineer · Islamabad, Pakistan</div>
-    <h1>Building <em>intelligent</em><br>systems that work<br>in production.</h1>
+    <div class="hero-eyebrow">Open to New Opportunities · Islamabad, Pakistan</div>
+    <h1>
+      AI Engineer &amp;<br>
+      <span class="accent">Data Scientist.</span>
+    </h1>
     <p class="hero-desc">
-      I design and deploy ML pipelines, LLM-based agents, RAG systems,
-      and data analytics solutions — bridging the gap between cutting-edge
-      AI research and real business outcomes.
+      I build intelligent systems that go beyond demos — production ML pipelines,
+      LLM agents, computer vision applications, and data analytics solutions
+      that create measurable business impact.
     </p>
     <div class="hero-actions">
-      <a href="resume.pdf" class="btn-primary" target="_blank">
-        ↓ Download Resume
-      </a>
-      <a href="mailto:abeera8801@gmail.com" class="btn-ghost">
-        abeera8801@gmail.com ↗
-      </a>
+      <a href="resume.pdf" class="btn btn-primary" target="_blank">↓ Download Resume</a>
+      <a href="mailto:abeera8801@gmail.com" class="btn btn-secondary">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">2<span>+</span></div>
+        <div class="stat-label">Years of Production Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">7<span>+</span></div>
+        <div class="stat-label">AI/ML Projects Shipped</div>
+      </div>
+      <div>
+        <div class="stat-num">3<span>+</span></div>
+        <div class="stat-label">Industry Certifications</div>
+      </div>
     </div>
   </div>
 </div>
@@ -404,7 +372,10 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <div class="section-label reveal">01 — About</div>
+    <div class="section-header reveal">
+      <div class="section-tag">About Me</div>
+      <h2 class="section-title">Engineer. Analyst. Builder.</h2>
+    </div>
     <div class="about-grid reveal">
       <div class="about-text">
         <p>
@@ -413,44 +384,45 @@
           to LLM agents and business intelligence dashboards.
         </p>
         <p>
-          My work spans the full stack of data science: wrangling messy real-world datasets,
+          My work spans the full data science stack: wrangling real-world datasets,
           engineering features, training and validating models, deploying inference APIs,
-          and communicating results to non-technical stakeholders.
+          and communicating results clearly to non-technical stakeholders.
         </p>
         <p>
-          I've worked with <strong>telecom network data</strong>, built <strong>computer vision
-          pipelines</strong> for real-time monitoring, and delivered <strong>BI dashboards</strong>
-          for clients across industries — including churn analysis and customer lifecycle
-          reporting for a business in Dubai.
+          I have worked directly with <strong>telecom network sensor data</strong>, built
+          <strong>computer vision pipelines</strong> for real-time retail and fitness applications,
+          integrated <strong>AI into enterprise ERP workflows</strong> — eliminating manual
+          processes entirely — and delivered <strong>BI dashboards</strong> including
+          churn and customer lifecycle analytics for clients across industries.
         </p>
         <p>
           I hold certifications from <strong>IBM</strong> (RAG &amp; Agentic AI) and
-          <strong>Google Cloud</strong> (Advanced ML), and I'm a graduate of
-          FAST-NUCES Islamabad.
+          <strong>Google Cloud</strong> (Advanced ML on GCP), and I am a graduate of
+          FAST-NUCES Islamabad in Electrical Engineering.
         </p>
       </div>
-      <div class="about-meta">
-        <div class="meta-item">
+      <div>
+        <div class="meta-row">
           <span class="meta-key">Current Role</span>
-          <span class="meta-val">Senior AI Engineer, Elite IT Team</span>
+          <span class="meta-val">Senior AI Engineer — Elite IT Team</span>
         </div>
-        <div class="meta-item">
+        <div class="meta-row">
           <span class="meta-key">Education</span>
           <span class="meta-val">B.S. Electrical Engineering, FAST-NUCES</span>
         </div>
-        <div class="meta-item">
+        <div class="meta-row">
           <span class="meta-key">Location</span>
           <span class="meta-val">Islamabad, Pakistan</span>
         </div>
-        <div class="meta-item">
+        <div class="meta-row">
           <span class="meta-key">Languages</span>
           <span class="meta-val">English (Fluent), Urdu (Native)</span>
         </div>
-        <div class="meta-item">
-          <span class="meta-key">Contact</span>
+        <div class="meta-row">
+          <span class="meta-key">Email</span>
           <span class="meta-val">abeera8801@gmail.com</span>
         </div>
-        <div class="meta-item">
+        <div class="meta-row">
           <span class="meta-key">LinkedIn</span>
           <span class="meta-val">linkedin.com/in/abeera-abbasi</span>
         </div>
@@ -462,19 +434,21 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <div class="section-label reveal">02 — Skills &amp; Tools</div>
+    <div class="section-header reveal">
+      <div class="section-tag">Skills &amp; Tools</div>
+      <h2 class="section-title">What I Work With</h2>
+    </div>
     <div class="skills-grid reveal">
       <div class="skill-group">
-        <div class="skill-group-title">ML &amp; AI</div>
+        <div class="skill-group-title">Machine Learning &amp; AI</div>
         <div class="skill-tags">
           <span class="skill-tag">Python</span>
           <span class="skill-tag">scikit-learn</span>
           <span class="skill-tag">XGBoost</span>
           <span class="skill-tag">Random Forest</span>
+          <span class="skill-tag">LSTM / RNNs</span>
           <span class="skill-tag">Deep Learning</span>
-          <span class="skill-tag">NLP</span>
-          <span class="skill-tag">Computer Vision</span>
-          <span class="skill-tag">YOLO</span>
+          <span class="skill-tag">Predictive Modelling</span>
           <span class="skill-tag">HuggingFace</span>
         </div>
       </div>
@@ -487,8 +461,20 @@
           <span class="skill-tag">Qdrant</span>
           <span class="skill-tag">Prompt Engineering</span>
           <span class="skill-tag">Function Calling</span>
-          <span class="skill-tag">GPT-4o</span>
-          <span class="skill-tag">Claude</span>
+          <span class="skill-tag">OpenAI GPT-4o</span>
+          <span class="skill-tag">Claude API</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Computer Vision &amp; NLP</div>
+        <div class="skill-tags">
+          <span class="skill-tag">YOLO</span>
+          <span class="skill-tag">Object Detection</span>
+          <span class="skill-tag">Pose Estimation</span>
+          <span class="skill-tag">NLP Pipelines</span>
+          <span class="skill-tag">Transformers</span>
+          <span class="skill-tag">TensorFlow Lite</span>
+          <span class="skill-tag">Google ML Kit</span>
         </div>
       </div>
       <div class="skill-group">
@@ -498,39 +484,33 @@
           <span class="skill-tag">Power BI</span>
           <span class="skill-tag">pandas</span>
           <span class="skill-tag">plotly</span>
-          <span class="skill-tag">Data Wrangling</span>
-          <span class="skill-tag">Statistical Analysis</span>
+          <span class="skill-tag">Data Pipelines</span>
+          <span class="skill-tag">Data Aggregation</span>
           <span class="skill-tag">Churn Modelling</span>
+          <span class="skill-tag">Statistical Analysis</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Infrastructure</div>
+        <div class="skill-group-title">Infrastructure &amp; Deployment</div>
         <div class="skill-tags">
           <span class="skill-tag">FastAPI</span>
           <span class="skill-tag">REST APIs</span>
-          <span class="skill-tag">Google Cloud</span>
-          <span class="skill-tag">Docker</span>
-          <span class="skill-tag">Git / GitHub</span>
+          <span class="skill-tag">Google Cloud Platform</span>
           <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">Git / GitHub</span>
+          <span class="skill-tag">ERP Integration</span>
+          <span class="skill-tag">Android / Kotlin</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Mobile &amp; Edge</div>
+        <div class="skill-group-title">Domains &amp; Soft Skills</div>
         <div class="skill-tags">
-          <span class="skill-tag">Android (Kotlin)</span>
-          <span class="skill-tag">TensorFlow Lite</span>
-          <span class="skill-tag">Google ML Kit</span>
-          <span class="skill-tag">On-device Inference</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Soft Skills</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Stakeholder Comms</span>
+          <span class="skill-tag">Telecom Data</span>
+          <span class="skill-tag">IoT / Sensor Data</span>
+          <span class="skill-tag">Retail Analytics</span>
+          <span class="skill-tag">Stakeholder Communication</span>
           <span class="skill-tag">Technical Writing</span>
-          <span class="skill-tag">Cross-functional</span>
           <span class="skill-tag">Mentorship</span>
-          <span class="skill-tag">Agile</span>
         </div>
       </div>
     </div>
@@ -540,32 +520,41 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container">
-    <div class="section-label reveal">03 — Projects</div>
-    <div class="projects-list">
+    <div class="section-header reveal">
+      <div class="section-tag">Projects</div>
+      <h2 class="section-title">Selected Work</h2>
+    </div>
+    <div class="projects-grid">
 
       <div class="project-card reveal">
         <div class="project-inner">
           <div class="project-content">
-            <div class="project-number">01</div>
-            <div class="project-title">CV-Based Fitness App</div>
+            <div class="project-meta">
+              <span class="project-num">01</span>
+              <span class="project-category">LLM · NLP</span>
+            </div>
+            <div class="project-title">Telecom Sensor RAG Chatbot</div>
             <p class="project-desc">
-              Real-time computer vision application that uses pose estimation to track
-              exercise form and count reps, providing live feedback to users. Designed
-              for accessibility — runs on standard camera hardware with no wearables required.
+              Conversational AI system built on live telecom network sensor data.
+              Uses RAG architecture to answer natural language queries about network
+              performance, faults, and telemetry — replacing manual log analysis with
+              an intelligent, always-available interface powered by OpenAI and Claude.
             </p>
             <div class="project-stack">
-              <span class="stack-tag">Python</span>
-              <span class="stack-tag">Computer Vision</span>
-              <span class="stack-tag">Pose Estimation</span>
-              <span class="stack-tag">Real-time Inference</span>
+              <span class="stack-tag">LangChain</span>
+              <span class="stack-tag">OpenAI GPT-4o</span>
+              <span class="stack-tag">Claude API</span>
+              <span class="stack-tag">RAG</span>
+              <span class="stack-tag">Qdrant</span>
+              <span class="stack-tag">Telecom Data</span>
+              <span class="stack-tag">FastAPI</span>
             </div>
           </div>
           <div class="project-visual">
-            <!-- Replace the placeholder below with: <img src="screenshots/fitness-app.png" alt="Fitness App Screenshot"> -->
-            <div class="project-visual-placeholder">
-              <div class="project-icon">🏋️</div>
-            </div>
-            <span class="screenshot-note">add screenshot →</span>
+            <!-- To add screenshot: remove the vis-placeholder div below and replace with:
+                 <img src="screenshots/telecom-rag.png" alt="Telecom RAG Chatbot"> -->
+            <div class="vis-placeholder"><div class="vis-icon">🛰️</div></div>
+            <span class="vis-hint">Add Screenshot</span>
           </div>
         </div>
       </div>
@@ -573,27 +562,120 @@
       <div class="project-card reveal">
         <div class="project-inner">
           <div class="project-content">
-            <div class="project-number">02</div>
-            <div class="project-title">CV-Based Grocery Store Monitoring</div>
+            <div class="project-meta">
+              <span class="project-num">02</span>
+              <span class="project-category">ML · IoT</span>
+            </div>
+            <div class="project-title">LSTM Predictive Maintenance for Network Sensors</div>
             <p class="project-desc">
-              Computer vision system for retail environments that monitors shelf stock levels,
-              detects out-of-stock conditions, and tracks customer movement patterns in real
-              time — enabling data-driven store operations without manual audits.
+              Deep learning system using LSTM networks to model time-series sensor data
+              and predict equipment failures before they occur. Trained on real telecom
+              infrastructure data, the model identifies anomalous patterns and flags
+              maintenance needs — reducing downtime and reactive repair costs.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">LSTM</span>
+              <span class="stack-tag">Time-Series Modelling</span>
+              <span class="stack-tag">Anomaly Detection</span>
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">Sensor Data</span>
+              <span class="stack-tag">Deep Learning</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <!-- <img src="screenshots/lstm.png" alt="LSTM Predictive Maintenance"> -->
+            <div class="vis-placeholder"><div class="vis-icon">📡</div></div>
+            <span class="vis-hint">Add Screenshot</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-num">03</span>
+              <span class="project-category">AI · Automation</span>
+            </div>
+            <div class="project-title">AI-Integrated ERP Workflow Automation</div>
+            <p class="project-desc">
+              End-to-end AI integration into a company's ERP system, eliminating manual
+              data entry and decision-making entirely. The solution automated document
+              processing, intelligent routing, and approval workflows — achieving
+              zero manual intervention in previously labour-intensive business processes.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">LLMs</span>
+              <span class="stack-tag">ERP Integration</span>
+              <span class="stack-tag">Process Automation</span>
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">FastAPI</span>
+              <span class="stack-tag">Zero Manual Work</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <!-- <img src="screenshots/erp.png" alt="ERP AI Automation"> -->
+            <div class="vis-placeholder"><div class="vis-icon">⚙️</div></div>
+            <span class="vis-hint">Add Screenshot</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-num">04</span>
+              <span class="project-category">Computer Vision</span>
+            </div>
+            <div class="project-title">CV-Based Fitness Coaching App</div>
+            <p class="project-desc">
+              Real-time computer vision application using pose estimation to track
+              exercise form and count reps, providing live feedback to users.
+              Runs entirely on standard camera hardware — no wearables or
+              specialised equipment required.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Pose Estimation</span>
+              <span class="stack-tag">Computer Vision</span>
+              <span class="stack-tag">Real-time Inference</span>
+              <span class="stack-tag">Python</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <!-- <img src="screenshots/fitness.png" alt="Fitness App"> -->
+            <div class="vis-placeholder"><div class="vis-icon">🏋️</div></div>
+            <span class="vis-hint">Add Screenshot</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-num">05</span>
+              <span class="project-category">Computer Vision · Retail</span>
+            </div>
+            <div class="project-title">Grocery Store Monitoring System</div>
+            <p class="project-desc">
+              Computer vision system for retail environments that monitors shelf
+              stock levels, detects out-of-stock conditions, and tracks customer
+              patterns in real time — enabling data-driven store operations
+              without manual audits.
             </p>
             <div class="project-stack">
               <span class="stack-tag">YOLO</span>
               <span class="stack-tag">Object Detection</span>
+              <span class="stack-tag">Retail Analytics</span>
               <span class="stack-tag">Python</span>
               <span class="stack-tag">Real-time Pipeline</span>
-              <span class="stack-tag">Retail Analytics</span>
             </div>
           </div>
           <div class="project-visual">
-            <!-- Replace with: <img src="screenshots/grocery.png" alt="Grocery Monitoring Screenshot"> -->
-            <div class="project-visual-placeholder">
-              <div class="project-icon">🛒</div>
-            </div>
-            <span class="screenshot-note">add screenshot →</span>
+            <!-- <img src="screenshots/grocery.png" alt="Grocery Monitoring"> -->
+            <div class="vis-placeholder"><div class="vis-icon">🛒</div></div>
+            <span class="vis-hint">Add Screenshot</span>
           </div>
         </div>
       </div>
@@ -601,70 +683,16 @@
       <div class="project-card reveal">
         <div class="project-inner">
           <div class="project-content">
-            <div class="project-number">03</div>
-            <div class="project-title">AI-Powered Restaurant Finder</div>
+            <div class="project-meta">
+              <span class="project-num">06</span>
+              <span class="project-category">Analytics · BI</span>
+            </div>
+            <div class="project-title">Customer Analytics Dashboard — Dubai Veterinary Clinic</div>
             <p class="project-desc">
-              Conversational AI application that understands natural language queries
-              to recommend restaurants based on cuisine, location, dietary preferences,
-              and user context — going beyond simple keyword search with semantic understanding.
-            </p>
-            <div class="project-stack">
-              <span class="stack-tag">LLMs</span>
-              <span class="stack-tag">LangChain</span>
-              <span class="stack-tag">RAG</span>
-              <span class="stack-tag">FastAPI</span>
-              <span class="stack-tag">NLP</span>
-            </div>
-          </div>
-          <div class="project-visual">
-            <!-- Replace with: <img src="screenshots/restaurant.png" alt="Restaurant Finder Screenshot"> -->
-            <div class="project-visual-placeholder">
-              <div class="project-icon">🍽️</div>
-            </div>
-            <span class="screenshot-note">add screenshot →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-inner">
-          <div class="project-content">
-            <div class="project-number">04</div>
-            <div class="project-title">Predictive AI Workflow System</div>
-            <p class="project-desc">
-              ML-powered automation system that replaces manual decision workflows with
-              data-driven, model-in-the-loop execution. Handles data ingestion, feature
-              engineering, conditional branching, and inference — reducing manual effort
-              across structured business processes.
-            </p>
-            <div class="project-stack">
-              <span class="stack-tag">Python</span>
-              <span class="stack-tag">ML Pipelines</span>
-              <span class="stack-tag">FastAPI</span>
-              <span class="stack-tag">Predictive Modelling</span>
-              <span class="stack-tag">Automation</span>
-            </div>
-          </div>
-          <div class="project-visual">
-            <!-- Replace with: <img src="screenshots/workflow.png" alt="Workflow System Screenshot"> -->
-            <div class="project-visual-placeholder">
-              <div class="project-icon">⚙️</div>
-            </div>
-            <span class="screenshot-note">add screenshot →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-inner">
-          <div class="project-content">
-            <div class="project-number">05</div>
-            <div class="project-title">Customer Analytics Dashboard — Dubai Vet Clinic</div>
-            <p class="project-desc">
-              End-to-end BI solution for a veterinary clinic in Dubai. Built churn analysis,
-              customer retention trends, and market benchmarking reports — translating raw
-              operational data into an interactive Power BI dashboard that informed the
-              client's retention strategy.
+              End-to-end BI solution for a veterinary clinic in Dubai. Built churn rate
+              analysis, customer retention trends, and market benchmarking reports —
+              translating raw operational data into an interactive Power BI dashboard
+              that directly informed the client's retention strategy.
             </p>
             <div class="project-stack">
               <span class="stack-tag">Power BI</span>
@@ -675,12 +703,102 @@
             </div>
           </div>
           <div class="project-visual">
-            <!-- Replace with: <img src="screenshots/dashboard.png" alt="Dashboard Screenshot"> -->
-            <div class="project-visual-placeholder">
-              <div class="project-icon">📊</div>
-            </div>
-            <span class="screenshot-note">add screenshot →</span>
+            <!-- <img src="screenshots/dashboard.png" alt="Analytics Dashboard"> -->
+            <div class="vis-placeholder"><div class="vis-icon">📊</div></div>
+            <span class="vis-hint">Add Screenshot</span>
           </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-num">07</span>
+              <span class="project-category">LLM · Product</span>
+            </div>
+            <div class="project-title">AI-Powered Restaurant Finder</div>
+            <p class="project-desc">
+              Conversational AI application that understands natural language queries
+              to recommend restaurants based on cuisine, location, and dietary preferences —
+              going beyond keyword search with LLM-driven semantic understanding
+              and personalised recommendations.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">LangChain</span>
+              <span class="stack-tag">RAG</span>
+              <span class="stack-tag">LLMs</span>
+              <span class="stack-tag">NLP</span>
+              <span class="stack-tag">FastAPI</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <!-- <img src="screenshots/restaurant.png" alt="Restaurant Finder"> -->
+            <div class="vis-placeholder"><div class="vis-icon">🍽️</div></div>
+            <span class="vis-hint">Add Screenshot</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Certifications</div>
+      <h2 class="section-title">Credentials &amp; Learning</h2>
+    </div>
+    <p class="certs-intro reveal">
+      Continuous learning is core to staying sharp in a fast-moving field.
+      These certifications reflect deliberate investment in the domains I work in most.
+    </p>
+    <div class="certs-grid reveal">
+
+      <div class="cert-card">
+        <div class="cert-image">
+          <!-- To add: replace the cert-placeholder div with <img src="certs/ibm-rag.png" alt="IBM Certificate"> -->
+          <div class="cert-placeholder">
+            <div class="cert-placeholder-icon">🏅</div>
+            <div class="cert-placeholder-text">Add Certificate Image</div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">IBM</div>
+          <div class="cert-name">RAG &amp; Agentic AI Professional Certificate</div>
+          <div class="cert-year">2025</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-image">
+          <!-- <img src="certs/google-ml.png" alt="Google Cloud Certificate"> -->
+          <div class="cert-placeholder">
+            <div class="cert-placeholder-icon">🏅</div>
+            <div class="cert-placeholder-text">Add Certificate Image</div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">Google Cloud</div>
+          <div class="cert-name">Advanced Machine Learning on Google Cloud Specialization</div>
+          <div class="cert-year">2025</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-image">
+          <!-- <img src="certs/python-ml.png" alt="Python ML Certificate"> -->
+          <div class="cert-placeholder">
+            <div class="cert-placeholder-icon">🏅</div>
+            <div class="cert-placeholder-text">Add Certificate Image</div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">Udemy</div>
+          <div class="cert-name">Python for Data Science &amp; Machine Learning Bootcamp</div>
+          <div class="cert-year">2024</div>
         </div>
       </div>
 
@@ -690,27 +808,29 @@
 
 <!-- FOOTER -->
 <div class="container">
-  <footer>
-    <span class="footer-name">Abeera Abbasi · 2025</span>
-    <div class="footer-links">
-      <a href="mailto:abeera8801@gmail.com">Email</a>
-      <a href="https://linkedin.com/in/abeera-abbasi" target="_blank">LinkedIn</a>
-      <a href="resume.pdf" target="_blank">Resume</a>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <span class="footer-name">Abeera Abbasi</span>
+      <span class="footer-sub">AI Engineer · Islamabad, Pakistan</span>
     </div>
-  </footer>
+    <div class="footer-links">
+      <a href="mailto:abeera8801@gmail.com" class="footer-link">Email</a>
+      <a href="https://linkedin.com/in/abeera-abbasi" target="_blank" class="footer-link">LinkedIn</a>
+      <a href="resume.pdf" target="_blank" class="footer-link">Resume ↗</a>
+    </div>
+  </div>
 </div>
 
 <script>
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
   reveals.forEach(el => observer.observe(el));
 </script>
 
