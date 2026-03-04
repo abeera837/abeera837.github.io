@@ -188,7 +188,8 @@
     border-color: var(--accent-mid);
     box-shadow: 0 4px 24px rgba(27,77,62,0.07);
   }
-  .project-inner { display: grid; grid-template-columns: 1fr 280px; min-height: 190px; }
+  .project-inner {display: block;}
+  .project-visual {  display: none;}
   .project-content { padding: 32px 36px; }
   .project-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
   .project-num {
@@ -304,7 +305,9 @@
   @media (max-width: 768px) {
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
-    .project-inner { grid-template-columns: 1fr; }
+
+    .project-inner {  display: block;}
+    .project-visual {  display: none;}
     .project-visual { display: none; }
     .certs-grid { grid-template-columns: 1fr 1fr; }
     .hero-stats { gap: 28px; }
@@ -348,13 +351,10 @@
       LLM agents, computer vision applications, and data analytics solutions
       that create measurable business impact.
     </p>
-    <div class="hero-actions">
-      <a href="resume.pdf" class="btn btn-primary" target="_blank">↓ Download Resume</a>
-      <a href="mailto:abeera8801@gmail.com" class="btn btn-secondary">Get In Touch</a>
-    </div>
+
     <div class="hero-stats">
       <div>
-        <div class="stat-num">2<span>+</span></div>
+        <div class="stat-num">2<span></span></div>
         <div class="stat-label">Years of Production Experience</div>
       </div>
       <div>
@@ -362,7 +362,7 @@
         <div class="stat-label">AI/ML Projects Shipped</div>
       </div>
       <div>
-        <div class="stat-num">3<span>+</span></div>
+        <div class="stat-num">3<span></span></div>
         <div class="stat-label">Industry Certifications</div>
       </div>
     </div>
@@ -379,26 +379,12 @@
     <div class="about-grid reveal">
       <div class="about-text">
         <p>
-          I'm an AI/ML Engineer with <strong>2+ years of production experience</strong>
-          building end-to-end intelligent systems — from predictive models and NLP pipelines
-          to LLM agents and business intelligence dashboards.
-        </p>
-        <p>
-          My work spans the full data science stack: wrangling real-world datasets,
-          engineering features, training and validating models, deploying inference APIs,
-          and communicating results clearly to non-technical stakeholders.
-        </p>
-        <p>
-          I have worked directly with <strong>telecom network sensor data</strong>, built
-          <strong>computer vision pipelines</strong> for real-time retail and fitness applications,
-          integrated <strong>AI into enterprise ERP workflows</strong> — eliminating manual
-          processes entirely — and delivered <strong>BI dashboards</strong> including
-          churn and customer lifecycle analytics for clients across industries.
-        </p>
-        <p>
-          I hold certifications from <strong>IBM</strong> (RAG &amp; Agentic AI) and
-          <strong>Google Cloud</strong> (Advanced ML on GCP), and I am a graduate of
-          FAST-NUCES Islamabad in Electrical Engineering.
+          Machine Learning Engineer with strong experience in predictive modelling, data analysis, and deployment of AI-powered systems. Skilled in building end-to-end machine learning pipelines including
+          data preprocessing, model development, experimentation, validation, and deployment. Experienced
+          in Python-based ML development, SQL-based data analysis, and production deployment of NLP and
+          GenAI systems. Proven ability to translate large-scale structured and unstructured data into actionable
+          insights and intelligent systems.
+
         </p>
       </div>
       <div>
@@ -444,7 +430,6 @@
         <div class="skill-tags">
           <span class="skill-tag">Python</span>
           <span class="skill-tag">scikit-learn</span>
-          <span class="skill-tag">XGBoost</span>
           <span class="skill-tag">Random Forest</span>
           <span class="skill-tag">LSTM / RNNs</span>
           <span class="skill-tag">Deep Learning</span>
@@ -458,6 +443,8 @@
           <span class="skill-tag">LangChain</span>
           <span class="skill-tag">LangGraph</span>
           <span class="skill-tag">RAG Pipelines</span>
+          <span class="skill-tag">Vector Database</span>
+
           <span class="skill-tag">Qdrant</span>
           <span class="skill-tag">Prompt Engineering</span>
           <span class="skill-tag">Function Calling</span>
@@ -499,7 +486,6 @@
           <span class="skill-tag">PostgreSQL</span>
           <span class="skill-tag">Git / GitHub</span>
           <span class="skill-tag">ERP Integration</span>
-          <span class="skill-tag">Android / Kotlin</span>
         </div>
       </div>
       <div class="skill-group">
@@ -526,130 +512,158 @@
     </div>
     <div class="projects-grid">
 
+      <!-- 01 -->
       <div class="project-card reveal">
         <div class="project-inner">
           <div class="project-content">
             <div class="project-meta">
               <span class="project-num">01</span>
-              <span class="project-category">LLM · NLP</span>
+              <span class="project-category">LLM · NLP · Production</span>
             </div>
-            <div class="project-title">Telecom Sensor RAG Chatbot</div>
+            <div class="project-title">Telecom Network RAG Chatbot</div>
             <p class="project-desc">
-              Conversational AI system built on live telecom network sensor data.
-              Uses RAG architecture to answer natural language queries about network
-              performance, faults, and telemetry — replacing manual log analysis with
-              an intelligent, always-available interface powered by OpenAI and Claude.
+              <strong>Problem:</strong> Network engineers were manually querying logs and sensor
+              telemetry to diagnose faults. This was slow, error-prone, and unscalable across hundreds of sites.
+              <br><br>
+              <strong>Solution:</strong> Designed and built a full RAG pipeline from scratch: ingesting
+              live telecom sensor data, chunking and embedding it into Qdrant, and exposing a
+              natural language interface backed by OpenAI GPT-4o and Claude. Architected the
+              retrieval strategy, prompt chain, and FastAPI serving layer end-to-end.
+              <br><br>
+              <strong>Outcome:</strong> Replaced manual log analysis entirely. Engineers query
+              network state, fault history, and performance trends in plain English with
+              sub-second responses.
             </p>
-            <div class="project-stack">
-              <span class="stack-tag">LangChain</span>
-              <span class="stack-tag">OpenAI GPT-4o</span>
-              <span class="stack-tag">Claude API</span>
-              <span class="stack-tag">RAG</span>
-              <span class="stack-tag">Qdrant</span>
-              <span class="stack-tag">Telecom Data</span>
-              <span class="stack-tag">FastAPI</span>
+            <div class="project-footer">
+              <div class="project-stack">
+                <span class="stack-tag">LangChain</span>
+                <span class="stack-tag">OpenAI GPT-4o</span>
+                <span class="stack-tag">Claude API</span>
+                <span class="stack-tag">Qdrant</span>
+                <span class="stack-tag">FastAPI</span>
+                <span class="stack-tag">GCP</span>
+              </div>
+
             </div>
           </div>
-          <div class="project-visual">
-            <!-- To add screenshot: remove the vis-placeholder div below and replace with:
-                 <img src="screenshots/telecom-rag.png" alt="Telecom RAG Chatbot"> -->
-            <div class="vis-placeholder"><div class="vis-icon">🛰️</div></div>
-            <span class="vis-hint">Add Screenshot</span>
-          </div>
+
         </div>
       </div>
 
+      <!-- 02 -->
       <div class="project-card reveal">
         <div class="project-inner">
           <div class="project-content">
             <div class="project-meta">
               <span class="project-num">02</span>
-              <span class="project-category">ML · IoT</span>
+              <span class="project-category">Deep Learning · IoT · Production</span>
             </div>
-            <div class="project-title">LSTM Predictive Maintenance for Network Sensors</div>
+            <div class="project-title">LSTM Predictive Maintenance for Telecom Infrastructure</div>
             <p class="project-desc">
-              Deep learning system using LSTM networks to model time-series sensor data
-              and predict equipment failures before they occur. Trained on real telecom
-              infrastructure data, the model identifies anomalous patterns and flags
-              maintenance needs — reducing downtime and reactive repair costs.
+              <strong>Problem:</strong> Reactive maintenance of telecom site equipment, battery backups and hardware was causing unplanned outages and
+              expensive emergency repairs.
+              <br><br>
+              <strong>Solution:</strong> Designed an LSTM-based time-series model trained on
+              historical sensor readings to predict failure windows before they occur.
+              Owned the full pipeline: data ingestion from live sensor feeds, feature
+              engineering, model training and validation, anomaly threshold tuning,
+              and deployment as a REST inference service.
+              <br><br>
+              <strong>Outcome:</strong> Model flags at-risk equipment in advance, enabling
+              scheduled maintenance and reducing unplanned downtime.
             </p>
-            <div class="project-stack">
-              <span class="stack-tag">LSTM</span>
-              <span class="stack-tag">Time-Series Modelling</span>
-              <span class="stack-tag">Anomaly Detection</span>
-              <span class="stack-tag">Python</span>
-              <span class="stack-tag">Sensor Data</span>
-              <span class="stack-tag">Deep Learning</span>
+            <div class="project-footer">
+              <div class="project-stack">
+                <span class="stack-tag">LSTM</span>
+                <span class="stack-tag">PyTorch</span>
+                <span class="stack-tag">Time-Series Analysis</span>
+                <span class="stack-tag">Anomaly Detection</span>
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">FastAPI</span>
+              </div>
+
             </div>
           </div>
-          <div class="project-visual">
-            <!-- <img src="screenshots/lstm.png" alt="LSTM Predictive Maintenance"> -->
-            <div class="vis-placeholder"><div class="vis-icon">📡</div></div>
-            <span class="vis-hint">Add Screenshot</span>
-          </div>
+
         </div>
       </div>
 
+      <!-- 03 -->
       <div class="project-card reveal">
         <div class="project-inner">
           <div class="project-content">
             <div class="project-meta">
               <span class="project-num">03</span>
-              <span class="project-category">AI · Automation</span>
+              <span class="project-category">AI Automation · Enterprise</span>
             </div>
-            <div class="project-title">AI-Integrated ERP Workflow Automation</div>
+            <div class="project-title">AI-First ERP Workflow — Zero Manual Intervention</div>
             <p class="project-desc">
-              End-to-end AI integration into a company's ERP system, eliminating manual
-              data entry and decision-making entirely. The solution automated document
-              processing, intelligent routing, and approval workflows — achieving
-              zero manual intervention in previously labour-intensive business processes.
+              <strong>Problem:</strong> A company's ERP system required constant manual
+              input for document processing, approvals, and data routing, creating
+              bottlenecks and human error across the operational workflow.
+              <br><br>
+              <strong>Solution:</strong> Designed and integrated an end-to-end AI layer
+              into the existing ERP system. Built LLM-powered document understanding,
+              intelligent routing logic, and automated approval workflows using function
+              calling and structured output validation. Owned system architecture, API
+              integration design, and production deployment.
+              <br><br>
+              <strong>Outcome:</strong> 100% of previously manual workflow steps are now
+              handled autonomously. Zero human intervention required in day-to-day operations.
             </p>
-            <div class="project-stack">
-              <span class="stack-tag">LLMs</span>
-              <span class="stack-tag">ERP Integration</span>
-              <span class="stack-tag">Process Automation</span>
-              <span class="stack-tag">Python</span>
-              <span class="stack-tag">FastAPI</span>
-              <span class="stack-tag">Zero Manual Work</span>
+            <div class="project-footer">
+              <div class="project-stack">
+                <span class="stack-tag">LLMs</span>
+                <span class="stack-tag">Function Calling</span>
+                <span class="stack-tag">ERP Integration</span>
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">FastAPI</span>
+                <span class="stack-tag">Structured Outputs</span>
+              </div>
+
             </div>
           </div>
-          <div class="project-visual">
-            <!-- <img src="screenshots/erp.png" alt="ERP AI Automation"> -->
-            <div class="vis-placeholder"><div class="vis-icon">⚙️</div></div>
-            <span class="vis-hint">Add Screenshot</span>
-          </div>
+
         </div>
       </div>
 
+      <!-- 04 -->
       <div class="project-card reveal">
         <div class="project-inner">
           <div class="project-content">
             <div class="project-meta">
               <span class="project-num">04</span>
-              <span class="project-category">Computer Vision</span>
+              <span class="project-category">Computer Vision · Real-Time</span>
             </div>
-            <div class="project-title">CV-Based Fitness Coaching App</div>
+            <div class="project-title">Real-Time CV Fitness Coaching Application</div>
             <p class="project-desc">
-              Real-time computer vision application using pose estimation to track
-              exercise form and count reps, providing live feedback to users.
-              Runs entirely on standard camera hardware — no wearables or
-              specialised equipment required.
+              <strong>Problem:</strong> Accurate exercise form tracking requires either
+              expensive gym equipment or a personal trainer, inaccessible to most users.
+              <br><br>
+              <strong>Solution:</strong> Built a real-time pose estimation pipeline that
+              tracks body keypoints via standard webcam input, classifies exercise type,
+              counts reps, and flags incorrect form with live feedback. Designed the
+              inference pipeline for low-latency performance on consumer hardware.
+              <br><br>
+              <strong>Outcome:</strong> Functional coaching experience with no specialised
+              hardware. Runs on any laptop or phone camera at real-time frame rates.
             </p>
-            <div class="project-stack">
-              <span class="stack-tag">Pose Estimation</span>
-              <span class="stack-tag">Computer Vision</span>
-              <span class="stack-tag">Real-time Inference</span>
-              <span class="stack-tag">Python</span>
+            <div class="project-footer">
+              <div class="project-stack">
+                <span class="stack-tag">MediaPipe</span>
+                <span class="stack-tag">Pose Estimation</span>
+                <span class="stack-tag">OpenCV</span>
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">Real-Time Inference</span>
+              </div>
+
             </div>
           </div>
-          <div class="project-visual">
-            <!-- <img src="screenshots/fitness.png" alt="Fitness App"> -->
-            <div class="vis-placeholder"><div class="vis-icon">🏋️</div></div>
-            <span class="vis-hint">Add Screenshot</span>
-          </div>
+
         </div>
       </div>
 
+      <!-- 05 -->
       <div class="project-card reveal">
         <div class="project-inner">
           <div class="project-content">
@@ -657,59 +671,74 @@
               <span class="project-num">05</span>
               <span class="project-category">Computer Vision · Retail</span>
             </div>
-            <div class="project-title">Grocery Store Monitoring System</div>
+            <div class="project-title">Grocery Store Shelf & Footfall Monitoring System</div>
             <p class="project-desc">
-              Computer vision system for retail environments that monitors shelf
-              stock levels, detects out-of-stock conditions, and tracks customer
-              patterns in real time — enabling data-driven store operations
-              without manual audits.
+              <strong>Problem:</strong> Retail stores had no automated way to detect
+              out-of-stock shelves or track customer movement patterns, relying entirely
+              on manual staff audits.
+              <br><br>
+              <strong>Solution:</strong> Built a YOLO-based real-time detection pipeline
+              that classifies shelf occupancy, detects empty zones, and tracks customer
+              footfall patterns from existing CCTV feeds. Designed the data pipeline
+              to process live video and surface alerts to store operations staff.
+              <br><br>
+              <strong>Outcome:</strong> Continuous shelf monitoring with automated
+              out-of-stock alerts, replacing manual audits with an always-on system.
             </p>
-            <div class="project-stack">
-              <span class="stack-tag">YOLO</span>
-              <span class="stack-tag">Object Detection</span>
-              <span class="stack-tag">Retail Analytics</span>
-              <span class="stack-tag">Python</span>
-              <span class="stack-tag">Real-time Pipeline</span>
+            <div class="project-footer">
+              <div class="project-stack">
+                <span class="stack-tag">YOLOv8</span>
+                <span class="stack-tag">Object Detection</span>
+                <span class="stack-tag">OpenCV</span>
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">Real-Time Pipeline</span>
+              </div>
+
             </div>
           </div>
-          <div class="project-visual">
-            <!-- <img src="screenshots/grocery.png" alt="Grocery Monitoring"> -->
-            <div class="vis-placeholder"><div class="vis-icon">🛒</div></div>
-            <span class="vis-hint">Add Screenshot</span>
-          </div>
+
         </div>
       </div>
 
+      <!-- 06 -->
       <div class="project-card reveal">
         <div class="project-inner">
           <div class="project-content">
             <div class="project-meta">
               <span class="project-num">06</span>
-              <span class="project-category">Analytics · BI</span>
+              <span class="project-category">Analytics · BI · Client Delivery</span>
             </div>
-            <div class="project-title">Customer Analytics Dashboard — Dubai Veterinary Clinic</div>
+            <div class="project-title">Customer Churn & Retention Dashboard</div>
             <p class="project-desc">
-              End-to-end BI solution for a veterinary clinic in Dubai. Built churn rate
-              analysis, customer retention trends, and market benchmarking reports —
-              translating raw operational data into an interactive Power BI dashboard
-              that directly informed the client's retention strategy.
+              <strong>Problem:</strong> A flower shop had no visibility
+              into customer churn, retention rates, or how they compared against
+              competitors in the local market.
+              <br><br>
+              <strong>Solution:</strong> Led the full analytics engagement i.e. designed the
+              data model, wrote SQL pipelines to clean and aggregate operational data,
+              built churn rate analysis and customer lifecycle segmentation, and delivered
+              an interactive Power BI dashboard tailored for non-technical management.
+              Also conducted market benchmarking to contextualise performance.
+              <br><br>
+              <strong>Outcome:</strong> Client gained first-ever visibility into retention
+              trends and at-risk customer segments, directly informing their retention strategy.
             </p>
-            <div class="project-stack">
-              <span class="stack-tag">Power BI</span>
-              <span class="stack-tag">SQL</span>
-              <span class="stack-tag">Churn Analysis</span>
-              <span class="stack-tag">Market Analysis</span>
-              <span class="stack-tag">Data Modelling</span>
+            <div class="project-footer">
+              <div class="project-stack">
+                <span class="stack-tag">Power BI</span>
+                <span class="stack-tag">SQL</span>
+                <span class="stack-tag">Churn Modelling</span>
+                <span class="stack-tag">Customer Segmentation</span>
+                <span class="stack-tag">Market Analysis</span>
+              </div>
+
             </div>
           </div>
-          <div class="project-visual">
-            <!-- <img src="screenshots/dashboard.png" alt="Analytics Dashboard"> -->
-            <div class="vis-placeholder"><div class="vis-icon">📊</div></div>
-            <span class="vis-hint">Add Screenshot</span>
-          </div>
+
         </div>
       </div>
 
+      <!-- 07 -->
       <div class="project-card reveal">
         <div class="project-inner">
           <div class="project-content">
@@ -717,33 +746,75 @@
               <span class="project-num">07</span>
               <span class="project-category">LLM · Product</span>
             </div>
-            <div class="project-title">AI-Powered Restaurant Finder</div>
+            <div class="project-title">AI-Powered Restaurant Recommendation Engine</div>
             <p class="project-desc">
-              Conversational AI application that understands natural language queries
-              to recommend restaurants based on cuisine, location, and dietary preferences —
-              going beyond keyword search with LLM-driven semantic understanding
-              and personalised recommendations.
+              <strong>Problem:</strong> Standard restaurant search relies on keyword
+              matching, it cannot interpret nuanced preferences like "something quiet
+              for a business lunch with vegetarian options under a certain budget."
+              <br><br>
+              <strong>Solution:</strong> Built a conversational recommendation engine
+              using LangChain and a RAG pipeline over a structured restaurant knowledge
+              base. The system interprets multi-constraint natural language queries,
+              retrieves semantically relevant options, and generates personalised
+              recommendations with reasoning.
+              <br><br>
+              <strong>Outcome:</strong> Semantic search that handles complex, multi-factor
+              preference queries that keyword-based systems cannot resolve.
             </p>
-            <div class="project-stack">
-              <span class="stack-tag">LangChain</span>
-              <span class="stack-tag">RAG</span>
-              <span class="stack-tag">LLMs</span>
-              <span class="stack-tag">NLP</span>
-              <span class="stack-tag">FastAPI</span>
+            <div class="project-footer">
+              <div class="project-stack">
+                <span class="stack-tag">LangChain</span>
+                <span class="stack-tag">RAG</span>
+                <span class="stack-tag">Semantic Search</span>
+                <span class="stack-tag">FastAPI</span>
+                <span class="stack-tag">Python</span>
+              </div>
+
             </div>
           </div>
-          <div class="project-visual">
-            <!-- <img src="screenshots/restaurant.png" alt="Restaurant Finder"> -->
-            <div class="vis-placeholder"><div class="vis-icon">🍽️</div></div>
-            <span class="vis-hint">Add Screenshot</span>
+
+        </div>
+      </div>
+
+      <!-- 08 -->
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-num">08</span>
+              <span class="project-category">AI · Analytics · BI</span>
+            </div>
+            <div class="project-title">AI Business Insights Dashboard</div>
+            <p class="project-desc">
+              <strong>Problem:</strong> Non-technical business stakeholders struggle to
+              extract actionable meaning from raw CSV or Excel data, they need insight,
+              not spreadsheets.
+              <br><br>
+              <strong>Solution:</strong> Built a smart analytics layer that ingests raw
+              tabular data, computes structured KPIs and performance trends, and uses
+              an LLM to generate plain-English summaries and strategic recommendations, presented through a clean, interactive dashboard.
+              <br><br>
+              <strong>Outcome:</strong> Business teams get instant, AI-generated
+              interpretation of their data with zero analytical overhead on their side.
+            </p>
+            <div class="project-footer">
+              <div class="project-stack">
+                <span class="stack-tag">LLM Prompt Engineering</span>
+                <span class="stack-tag">Generative AI</span>
+                <span class="stack-tag">Data Analysis</span>
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">Business Intelligence</span>
+              </div>
+
+            </div>
           </div>
+
         </div>
       </div>
 
     </div>
   </div>
 </section>
-
 <!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="container">
@@ -758,13 +829,7 @@
     <div class="certs-grid reveal">
 
       <div class="cert-card">
-        <div class="cert-image">
-          <!-- To add: replace the cert-placeholder div with <img src="certs/ibm-rag.png" alt="IBM Certificate"> -->
-          <div class="cert-placeholder">
-            <div class="cert-placeholder-icon">🏅</div>
-            <div class="cert-placeholder-text">Add Certificate Image</div>
-          </div>
-        </div>
+
         <div class="cert-body">
           <div class="cert-issuer">IBM</div>
           <div class="cert-name">RAG &amp; Agentic AI Professional Certificate</div>
@@ -773,13 +838,7 @@
       </div>
 
       <div class="cert-card">
-        <div class="cert-image">
-          <!-- <img src="certs/google-ml.png" alt="Google Cloud Certificate"> -->
-          <div class="cert-placeholder">
-            <div class="cert-placeholder-icon">🏅</div>
-            <div class="cert-placeholder-text">Add Certificate Image</div>
-          </div>
-        </div>
+
         <div class="cert-body">
           <div class="cert-issuer">Google Cloud</div>
           <div class="cert-name">Advanced Machine Learning on Google Cloud Specialization</div>
@@ -788,13 +847,7 @@
       </div>
 
       <div class="cert-card">
-        <div class="cert-image">
-          <!-- <img src="certs/python-ml.png" alt="Python ML Certificate"> -->
-          <div class="cert-placeholder">
-            <div class="cert-placeholder-icon">🏅</div>
-            <div class="cert-placeholder-text">Add Certificate Image</div>
-          </div>
-        </div>
+
         <div class="cert-body">
           <div class="cert-issuer">Udemy</div>
           <div class="cert-name">Python for Data Science &amp; Machine Learning Bootcamp</div>
