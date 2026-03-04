@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abeera Abbasi — AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F6F2;
+    --surface: #EDECEA;
+    --border: #D8D5CF;
+    --text: #1A1916;
+    --muted: #7A7670;
+    --accent: #2A5F4F;
+    --accent-light: #E8F0EE;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(247,246,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 18px 0;
+  }
+  nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-name {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    padding: 140px 0 96px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 58px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.1s forwards;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-desc {
+    max-width: 520px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.3s forwards;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    padding: 11px 22px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--mono);
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    padding: 11px 0;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: var(--mono);
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--text); }
+
+  /* SECTIONS */
+  section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 40px;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 16px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { color: var(--text); font-weight: 500; }
+  .about-meta { display: flex; flex-direction: column; gap: 20px; }
+  .meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .meta-key {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .meta-val { font-size: 14px; color: var(--text); }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .skill-group {
+    background: var(--bg);
+    padding: 28px 24px;
+  }
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 3px 9px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 2px; }
+  .project-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .project-card:hover { border-color: var(--accent); }
+  .project-inner {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    min-height: 200px;
+  }
+  .project-content { padding: 36px 36px 36px 36px; }
+  .project-number {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .project-title {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .project-desc {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+  .stack-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .project-visual {
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .project-visual-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+  }
+  .project-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    background: var(--bg);
+  }
+  .project-visual-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  /* screenshot placeholder styling */
+  .project-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .screenshot-note {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--border);
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 48px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-name {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .project-inner { grid-template-columns: 1fr; }
+    .project-visual { display: none; }
+    footer { flex-direction: column; gap: 20px; text-align: center; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 480px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a class="nav-name" href="#">abeera.abbasi</a>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="resume.pdf" target="_blank">resume ↗</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="container">
+  <div class="hero">
+    <div class="hero-label">AI Engineer · Islamabad, Pakistan</div>
+    <h1>Building <em>intelligent</em><br>systems that work<br>in production.</h1>
+    <p class="hero-desc">
+      I design and deploy ML pipelines, LLM-based agents, RAG systems,
+      and data analytics solutions — bridging the gap between cutting-edge
+      AI research and real business outcomes.
+    </p>
+    <div class="hero-actions">
+      <a href="resume.pdf" class="btn-primary" target="_blank">
+        ↓ Download Resume
+      </a>
+      <a href="mailto:abeera8801@gmail.com" class="btn-ghost">
+        abeera8801@gmail.com ↗
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label reveal">01 — About</div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>
+          I'm an AI/ML Engineer with <strong>2+ years of production experience</strong>
+          building end-to-end intelligent systems — from predictive models and NLP pipelines
+          to LLM agents and business intelligence dashboards.
+        </p>
+        <p>
+          My work spans the full stack of data science: wrangling messy real-world datasets,
+          engineering features, training and validating models, deploying inference APIs,
+          and communicating results to non-technical stakeholders.
+        </p>
+        <p>
+          I've worked with <strong>telecom network data</strong>, built <strong>computer vision
+          pipelines</strong> for real-time monitoring, and delivered <strong>BI dashboards</strong>
+          for clients across industries — including churn analysis and customer lifecycle
+          reporting for a business in Dubai.
+        </p>
+        <p>
+          I hold certifications from <strong>IBM</strong> (RAG &amp; Agentic AI) and
+          <strong>Google Cloud</strong> (Advanced ML), and I'm a graduate of
+          FAST-NUCES Islamabad.
+        </p>
+      </div>
+      <div class="about-meta">
+        <div class="meta-item">
+          <span class="meta-key">Current Role</span>
+          <span class="meta-val">Senior AI Engineer, Elite IT Team</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Education</span>
+          <span class="meta-val">B.S. Electrical Engineering, FAST-NUCES</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Location</span>
+          <span class="meta-val">Islamabad, Pakistan</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Languages</span>
+          <span class="meta-val">English (Fluent), Urdu (Native)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Contact</span>
+          <span class="meta-val">abeera8801@gmail.com</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">LinkedIn</span>
+          <span class="meta-val">linkedin.com/in/abeera-abbasi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label reveal">02 — Skills &amp; Tools</div>
+    <div class="skills-grid reveal">
+      <div class="skill-group">
+        <div class="skill-group-title">ML &amp; AI</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">scikit-learn</span>
+          <span class="skill-tag">XGBoost</span>
+          <span class="skill-tag">Random Forest</span>
+          <span class="skill-tag">Deep Learning</span>
+          <span class="skill-tag">NLP</span>
+          <span class="skill-tag">Computer Vision</span>
+          <span class="skill-tag">YOLO</span>
+          <span class="skill-tag">HuggingFace</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">LLMs &amp; Agents</div>
+        <div class="skill-tags">
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">LangGraph</span>
+          <span class="skill-tag">RAG Pipelines</span>
+          <span class="skill-tag">Qdrant</span>
+          <span class="skill-tag">Prompt Engineering</span>
+          <span class="skill-tag">Function Calling</span>
+          <span class="skill-tag">GPT-4o</span>
+          <span class="skill-tag">Claude</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Data &amp; Analytics</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">pandas</span>
+          <span class="skill-tag">plotly</span>
+          <span class="skill-tag">Data Wrangling</span>
+          <span class="skill-tag">Statistical Analysis</span>
+          <span class="skill-tag">Churn Modelling</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Infrastructure</div>
+        <div class="skill-tags">
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">Google Cloud</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Git / GitHub</span>
+          <span class="skill-tag">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Mobile &amp; Edge</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Android (Kotlin)</span>
+          <span class="skill-tag">TensorFlow Lite</span>
+          <span class="skill-tag">Google ML Kit</span>
+          <span class="skill-tag">On-device Inference</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Soft Skills</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Stakeholder Comms</span>
+          <span class="skill-tag">Technical Writing</span>
+          <span class="skill-tag">Cross-functional</span>
+          <span class="skill-tag">Mentorship</span>
+          <span class="skill-tag">Agile</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label reveal">03 — Projects</div>
+    <div class="projects-list">
+
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div class="project-number">01</div>
+            <div class="project-title">CV-Based Fitness App</div>
+            <p class="project-desc">
+              Real-time computer vision application that uses pose estimation to track
+              exercise form and count reps, providing live feedback to users. Designed
+              for accessibility — runs on standard camera hardware with no wearables required.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">Computer Vision</span>
+              <span class="stack-tag">Pose Estimation</span>
+              <span class="stack-tag">Real-time Inference</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <!-- Replace the placeholder below with: <img src="screenshots/fitness-app.png" alt="Fitness App Screenshot"> -->
+            <div class="project-visual-placeholder">
+              <div class="project-icon">🏋️</div>
+            </div>
+            <span class="screenshot-note">add screenshot →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div class="project-number">02</div>
+            <div class="project-title">CV-Based Grocery Store Monitoring</div>
+            <p class="project-desc">
+              Computer vision system for retail environments that monitors shelf stock levels,
+              detects out-of-stock conditions, and tracks customer movement patterns in real
+              time — enabling data-driven store operations without manual audits.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">YOLO</span>
+              <span class="stack-tag">Object Detection</span>
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">Real-time Pipeline</span>
+              <span class="stack-tag">Retail Analytics</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <!-- Replace with: <img src="screenshots/grocery.png" alt="Grocery Monitoring Screenshot"> -->
+            <div class="project-visual-placeholder">
+              <div class="project-icon">🛒</div>
+            </div>
+            <span class="screenshot-note">add screenshot →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div class="project-number">03</div>
+            <div class="project-title">AI-Powered Restaurant Finder</div>
+            <p class="project-desc">
+              Conversational AI application that understands natural language queries
+              to recommend restaurants based on cuisine, location, dietary preferences,
+              and user context — going beyond simple keyword search with semantic understanding.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">LLMs</span>
+              <span class="stack-tag">LangChain</span>
+              <span class="stack-tag">RAG</span>
+              <span class="stack-tag">FastAPI</span>
+              <span class="stack-tag">NLP</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <!-- Replace with: <img src="screenshots/restaurant.png" alt="Restaurant Finder Screenshot"> -->
+            <div class="project-visual-placeholder">
+              <div class="project-icon">🍽️</div>
+            </div>
+            <span class="screenshot-note">add screenshot →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div class="project-number">04</div>
+            <div class="project-title">Predictive AI Workflow System</div>
+            <p class="project-desc">
+              ML-powered automation system that replaces manual decision workflows with
+              data-driven, model-in-the-loop execution. Handles data ingestion, feature
+              engineering, conditional branching, and inference — reducing manual effort
+              across structured business processes.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">ML Pipelines</span>
+              <span class="stack-tag">FastAPI</span>
+              <span class="stack-tag">Predictive Modelling</span>
+              <span class="stack-tag">Automation</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <!-- Replace with: <img src="screenshots/workflow.png" alt="Workflow System Screenshot"> -->
+            <div class="project-visual-placeholder">
+              <div class="project-icon">⚙️</div>
+            </div>
+            <span class="screenshot-note">add screenshot →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div class="project-number">05</div>
+            <div class="project-title">Customer Analytics Dashboard — Dubai Vet Clinic</div>
+            <p class="project-desc">
+              End-to-end BI solution for a veterinary clinic in Dubai. Built churn analysis,
+              customer retention trends, and market benchmarking reports — translating raw
+              operational data into an interactive Power BI dashboard that informed the
+              client's retention strategy.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Power BI</span>
+              <span class="stack-tag">SQL</span>
+              <span class="stack-tag">Churn Analysis</span>
+              <span class="stack-tag">Market Analysis</span>
+              <span class="stack-tag">Data Modelling</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <!-- Replace with: <img src="screenshots/dashboard.png" alt="Dashboard Screenshot"> -->
+            <div class="project-visual-placeholder">
+              <div class="project-icon">📊</div>
+            </div>
+            <span class="screenshot-note">add screenshot →</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="container">
+  <footer>
+    <span class="footer-name">Abeera Abbasi · 2025</span>
+    <div class="footer-links">
+      <a href="mailto:abeera8801@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/abeera-abbasi" target="_blank">LinkedIn</a>
+      <a href="resume.pdf" target="_blank">Resume</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
